@@ -1,29 +1,39 @@
-body {
+/* Базовый сброс и настройка высоты */
+html, body {
     height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
     background: #fce4ec;
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin: 0;
-    padding: 10px; /* Добавил отступы по краям для телефона */
+    padding: 10px;
     box-sizing: border-box;
+    min-height: 100vh; 
 }
 
+
+main, .content {
+    flex: 1; 
+}
+
+/* Картинки — адаптивны */
 img {
     border-radius: 40px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    max-width: 100%; /* Картинки не вылезают за экран */
+    margin: 20px auto 0 auto;
+    max-width: 100%;
     height: auto;
 }
 
 h1 {
     text-align: center;
-    margin-top: 80px;
+    margin-top: 30px; /* Уменьшил, чтобы не уезжало вверх */
     font-size: 40px;
-    font-family: Courier New;
+    font-family: Courier New, monospace;
 }
 
 .ind {
@@ -31,26 +41,25 @@ h1 {
     font-family: Courier New, monospace;
     font-weight: 500;
     width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 90%; /* Адаптивность */
+    margin: 0 auto;
+    max-width: 90%;
 }
 
+/* Футер — будет прижат к низу, даже если контента мало */
 h5 {
-    margin-top: auto;
-    margin-bottom: 20px;
+    margin: 20px 0 10px 0; /* Убрал margin-top: auto, теперь он сам прижимается через flex */
     color: darkgray;
     font-family: Courier New, serif;
     text-align: center;
     letter-spacing: 1.8px;
+    flex-shrink: 0; /* Не сжимается */
 }
 
 blockquote {
     font-size: 19px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px auto;
     width: 700px;
-    font-family: Snell Roundhand, cursive;
+    font-family: 'Snell Roundhand', cursive;
     padding-left: 200px;
     max-width: 90%;
     box-sizing: border-box;
@@ -59,7 +68,7 @@ blockquote {
 blockquote .author {
     font-size: 15px;
     color: silver;
-    font-family: Snell Roundhand;
+    font-family: 'Snell Roundhand', cursive;
 }
 
 .name-input {
@@ -72,9 +81,9 @@ blockquote .author {
     padding: 5px;
     font-size: 20px;
     padding-left: 20px;
-    font-family: Courier New;
+    font-family: Courier New, monospace;
     font-weight: bold;
-    margin: 0 auto;
+    margin: 20px auto;
     max-width: 80%;
 }
 
@@ -85,12 +94,12 @@ blockquote .author {
     width: 110px;
     height: 40px;
     display: block;
-    margin: 0 auto;
+    margin: 20px auto;
     text-align: center;
     font-weight: bold;
     color: black;
     font-size: 22px;
-    font-family: Courier New;
+    font-family: Courier New, monospace;
     transition: all 0.4s;
     cursor: pointer;
 }
@@ -110,7 +119,7 @@ blockquote .author {
     width: auto;
     min-width: 200px;
     max-width: 300px;
-    font-family: Courier New;
+    font-family: Courier New, monospace;
     font-size: 22px;
     font-weight: bold;
 }
@@ -159,7 +168,7 @@ blockquote .author {
     justify-items: center;
     align-items: start;
     max-width: 700px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 10px;
 }
 
@@ -188,7 +197,7 @@ blockquote .author {
 }
 
 .options-grid label .option-text {
-    font-family: Courier New;
+    font-family: Courier New, monospace;
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -207,38 +216,36 @@ blockquote .author {
 
 .que {
     font-size: 30px;
-    font-family: Courier New;
+    font-family: Courier New, monospace;
     font-weight: 600;
     letter-spacing: 2px;
+    margin: 20px 0;
 }
 
 .result {
     font-size: 18px;
-    font-family: Courier New;
+    font-family: Courier New, monospace;
     width: 750px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px auto;
     max-width: 90%;
 }
 
 .youres {
     font-size: 14px;
-    font-family: Courier New;
+    font-family: Courier New, monospace;
 }
 
 .imgres {
     border-radius: 40px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
+    margin: 20px auto;
     max-width: 90%;
     height: auto;
 }
 
 .subject {
     font-size: 24px;
-    font-family: Courier New;
+    font-family: Courier New, monospace;
     font-weight: 600;
 }
 
@@ -249,12 +256,12 @@ blockquote .author {
     width: 170px;
     height: 40px;
     display: block;
-    margin: 0 auto;
+    margin: 30px auto;
     text-align: center;
     font-weight: bold;
     color: black;
     font-size: 18px;
-    font-family: Courier New;
+    font-family: Courier New, monospace;
     transition: all 0.4s;
     cursor: pointer;
 }
@@ -263,14 +270,16 @@ blockquote .author {
     box-shadow: 0 0 0 2px white, 0 0 0 5px #01579b;
 }
 
+/* ========== АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ ========== */
 @media (max-width: 768px) {
     body {
-        padding: 10px;
+        padding: 15px 10px;
+        justify-content: flex-start; /* Не растягиваем, но flex-дети сами распределятся */
     }
 
     h1 {
         font-size: 28px;
-        margin-top: 40px;
+        margin-top: 20px;
     }
 
     .ind {
@@ -288,6 +297,7 @@ blockquote .author {
     .que {
         font-size: 24px;
     }
+
     .options-grid {
         grid-template-columns: 1fr;
         gap: 15px;
@@ -340,7 +350,14 @@ blockquote .author {
     .youres {
         font-size: 12px;
     }
+
+    h5 {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
 }
+
 @media (max-width: 480px) {
     h1 {
         font-size: 24px;
